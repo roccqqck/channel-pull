@@ -1,0 +1,13 @@
+# Adjust for your local IP address pool
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: metallb-system
+  name: config
+data:
+  config: |
+    address-pools:
+    - name: default
+      protocol: layer2
+      addresses:
+      - 10.68.0.221-10.68.0.225
