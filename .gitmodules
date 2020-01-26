@@ -1,0 +1,3 @@
+[submodule "resources/E22/kubeinvaders"]
+	path = resources/E22/kubeinvaders
+	url = https://github.com/oskapt/kubeinvaders
