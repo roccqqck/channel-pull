@@ -25,3 +25,4 @@ This repository contains supporting resources for my [YouTube Channel](https://a
 - [E19](resources/E19) - Rancher 101: Custom and Imported Kubernetes Clusters
 - [E20](resources/E20) - Seven Days With Rio (7DWR)
 - [E21](resources/E21) - Using MetalLB with Nginx and Rancher
+- [E22](resources/E22) - K8s Chaos Engineering with KubeInvaders
