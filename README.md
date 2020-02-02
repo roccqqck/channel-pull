@@ -24,5 +24,6 @@ This repository contains supporting resources for my [YouTube Channel](https://a
 - [E18](resources/E18) - Kubernetes 101: Get Better Uptime with K8s Health Checks
 - [E19](resources/E19) - Rancher 101: Custom and Imported Kubernetes Clusters
 - [E20](resources/E20) - Seven Days With Rio (7DWR)
-- [E21](resources/E21) - Using MetalLB with Nginx and Rancher
-- [E22](resources/E22) - K8s Chaos Engineering with KubeInvaders
+- [2020.01](resources/2020.01) - Using MetalLB with Nginx and Rancher
+- [2020.02](resources/2020.02) - K8s Chaos Engineering with KubeInvaders
+
