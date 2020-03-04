@@ -25,3 +25,11 @@ Thanks for watching! If you liked the video, please give it a thumbs up and subs
 
 Have a great 2020!
 
+
+# ChangeLog
+
+## 2020-03-04
+
+### Changed
+
+- Replicated [https://github.com/kubernetes/ingress-nginx/tree/nginx-0.29.0/deploy/cloud-generic](cloud-generic) configuration in response to [this issue](https://gitlab.com/monachus/channel/issues/1). 

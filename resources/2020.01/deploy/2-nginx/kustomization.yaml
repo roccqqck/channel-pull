@@ -1,9 +1,10 @@
 # kustomization.yaml
 namespace: ingress-nginx
-resources:
-  - github.com/kubernetes/ingress-nginx/deploy//cloud-generic
+bases:
+  - base
+images:
+  - name: quay.io/kubernetes-ingress-controller/nginx-ingress-controller
+    newTag: latest
 patchesStrategicMerge:
   - service.yaml
-  - configs/tcp-services.yaml
-  - configs/udp-services.yaml
   - configs/nginx.conf.yaml
