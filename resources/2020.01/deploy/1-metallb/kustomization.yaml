@@ -1,6 +1,7 @@
 # kustomization.yml
 namespace: metallb-system
-
+bases:
+  - github.com/danderson/metallb//manifests?ref=v0.9.3
 resources:
-  - github.com/danderson/metallb//manifests?ref=v0.8.3
   - configmap.yaml 
+  - secret.yaml

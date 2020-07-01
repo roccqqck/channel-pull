@@ -1,5 +1,7 @@
 # kustomization.yaml
 namespace: ingress-nginx
+resources:
+  - namespace.yaml
 bases:
   - base
 images:
