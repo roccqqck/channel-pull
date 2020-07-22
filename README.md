@@ -4,6 +4,8 @@ This repository contains supporting resources for my [YouTube Channel](https://a
 
 ## Videos
 
+### Tutorials
+
 - [E01](resources/E01) - Rancher 101: How to Use RKE to Make Rancher HA
 - [E02](resources/E02) - Rancher 101: How to Install Rancher on a Single Node
 - [E03](resources/E03) - Rancher 101: How To Make Your Rancher Server Immortal
@@ -27,3 +29,6 @@ This repository contains supporting resources for my [YouTube Channel](https://a
 - [2020.01](resources/2020.01) - Using MetalLB with Nginx and Rancher
 - [2020.02](resources/2020.02) - K8s Chaos Engineering with KubeInvaders
 
+### CNCN (Coffee and Cloud Native)
+
+- [Season 01](CNCN/S01)
