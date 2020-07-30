@@ -6,7 +6,7 @@ bases:
   - base
 images:
   - name: quay.io/kubernetes-ingress-controller/nginx-ingress-controller
-    newTag: latest
+    newTag: master
 patchesStrategicMerge:
   - service.yaml
   - configs/nginx.conf.yaml
