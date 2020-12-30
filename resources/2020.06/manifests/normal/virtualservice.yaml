@@ -1,0 +1,21 @@
+apiVersion: gateway.solo.io/v1
+kind: VirtualService
+metadata:
+  name: wp-test
+spec:
+  virtualHost:
+    domains:
+    - wp-test.cl.monach.us
+    routes:
+    - matchers:
+      - prefix: /wp-
+      redirectAction: 
+        prefixRewrite: /wordpress/wp-
+    - matchers:
+      - prefix: /
+      routeAction:
+        single:
+          upstream:
+            name: channel-wp-test-80
+            namespace: gloo-system
+

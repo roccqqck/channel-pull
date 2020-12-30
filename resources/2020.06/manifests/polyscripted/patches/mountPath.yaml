@@ -1,0 +1,6 @@
+- op: replace
+  path: /spec/template/spec/containers/0/volumeMounts
+  value:
+    - name: content
+      mountPath: /wordpress/shared
+

@@ -1,0 +1,15 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wp-test
+spec:
+  template:
+    spec:
+      containers:
+      - name: wordpress
+        #image: monachus/wordpress:v5.6.0-pv
+        image: registry.cl.monach.us/monachus/wordpress:v5.6.0-pv
+        env:
+        - name: POLYSCRIPT_MODE
+          value: "on"
+status: {}

@@ -1,0 +1,19 @@
+namespace: channel
+commonLabels:
+  app.kubernetes.io/name: wp-test
+resources:
+- pvc.yaml
+- deployment.yaml
+- service.yaml
+- virtualservice.yaml
+configMapGenerator:
+- name: wp-test
+  literals:
+  - WORDPRESS_DB_HOST=db.cl.monach.us
+  - WORDPRESS_DB_NAME=wp_test
+  - WORDPRESS_URL=http://wp-test.cl.monach.us
+secretGenerator:
+- name: wp-test
+  envs:
+  - secret.txt
+

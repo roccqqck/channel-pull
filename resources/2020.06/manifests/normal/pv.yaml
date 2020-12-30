@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: wp-test-vol
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  storageClass: nfs-client
+  nfs:
+    server: nas.cl.monach.us
+    path: "/volume1/rancher/wp_test_vol"

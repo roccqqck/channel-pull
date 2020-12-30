@@ -1,0 +1,10 @@
+- op: replace
+  path: /spec/virtualHost/routes/1/routeAction/single/upstream
+  value:
+    name: channel-poly-wp-test-80
+    namespace: gloo-system
+- op: replace
+  path: /spec/virtualHost/domains/0
+  value:
+    poly-wp-test.cl.monach.us
+

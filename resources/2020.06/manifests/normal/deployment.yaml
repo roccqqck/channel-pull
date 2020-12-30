@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wp-test
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+    spec:
+      containers:
+      - name: wordpress
+        image: monachus/wordpress:v5.6.0
+        ports:
+        - containerPort: 80
+        envFrom:
+          - configMapRef: 
+              name: wp-test
+          - secretRef: 
+              name: wp-test
+        resources: 
+          requests:
+            cpu: 100m
+            memory: 64Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+        volumeMounts:
+        - mountPath: /var/www/html/shared
+          name: content
+      volumes:
+        - name: content
+          persistentVolumeClaim:
+            claimName: wp-test-vol-claim
+status: {}
