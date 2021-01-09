@@ -8,9 +8,9 @@ spec:
     - wp-test.cl.monach.us
     routes:
     - matchers:
-      - prefix: /wp-
+      - regex: /wp-admin
       redirectAction: 
-        prefixRewrite: /wordpress/wp-
+        prefixRewrite: /wordpress/wp-admin
     - matchers:
       - prefix: /
       routeAction:
