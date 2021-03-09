@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: cattle-system
+---
+apiVersion: helm.cattle.io/v1
+kind: HelmChart
+metadata:
+  name: rancher
+  namespace: kube-system
+spec:
+  chart: rancher
+  targetNamespace: cattle-system
+  repo: https://releases.rancher.com/server-charts/stable
+  valuesContent: |-
+    hostname: rancher-demo.cl.monach.us
+    rancherImageTag: v2.5.5
+
