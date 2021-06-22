@@ -1,12 +1,15 @@
 # kustomization.yaml
-namespace: ingress-nginx
-resources:
-  - namespace.yaml
 bases:
-  - base
-images:
-  - name: quay.io/kubernetes-ingress-controller/nginx-ingress-controller
-    newTag: master
+- github.com/kubernetes/ingress-nginx/deploy/static/provider/baremetal?ref=controller-v0.47.0
+resources:
+- configs/tcp-services.yaml
+- configs/udp-services.yaml
 patchesStrategicMerge:
-  - service.yaml
-  - configs/nginx.conf.yaml
+- configs/nginx.conf.yaml
+patchesJson6902:
+- target:
+    group: ''
+    version: v1
+    kind: Service
+    name: ingress-nginx-controller
+  path: service.yaml

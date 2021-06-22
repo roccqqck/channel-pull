@@ -22,6 +22,9 @@ spec:
         image: monachus/rancher-demo
         ports:
         - containerPort: 8080
+        env:
+        - name: COW_COLOR
+          value: yellow
         resources:
           limits:
             cpu: "0.1"
