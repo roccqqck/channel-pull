@@ -1,0 +1,11 @@
+token: K10400a2a885bd2afd9bbf90b3b7e3117f7b9b78393d240bc509699c04e111949d2::server:9b27c71333958cefa9c31ca3c4c3a674
+server: https://demo-cluster.home.monach.us:9345
+tls-san:
+- demo-b
+- demo-b.home.monach.us
+- demo-cluster.home.monach.us
+- 10.68.0.81
+disable:
+- rke2-ingress-nginx
+cni:
+- cilium

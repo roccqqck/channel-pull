@@ -1,4 +1,6 @@
-# 2021.02
+# HA K3s with kube-vip, MetalLB, and Rancher
+
+- [Video](https://youtu.be/9PLw1xalcYA)
 
 ## K3s VIP installation
 
@@ -10,7 +12,7 @@ k3sup install \
 	--local-path=config.demo.yaml \
 	--context demo \
 	--cluster \
-	--tls-san 10.68.0.240 \
+	--tls-san 10.68.0.80 \
 	--k3s-extra-args="--disable servicelb --node-taint node-role.kubernetes.io/master=true:NoSchedule"
 
 kcc -f config.demo.yaml
@@ -28,11 +30,11 @@ ifconfig ens18
 export VIP=10.68.0.240
 export INTERFACE=ens18
 
-# fetch container 
-crictl pull docker.io/plndr/kube-vip:0.3.2
+# fetch container
+crictl pull docker.io/plndr/kube-vip:0.3.6
 
 # create alias
-alias kube-vip="ctr run --rm --net-host docker.io/plndr/kube-vip:0.3.2 vip /kube-vip"
+alias kube-vip="ctr run --rm --net-host docker.io/plndr/kube-vip:0.3.6 vip /kube-vip"
 
 # generate manifest
 kube-vip manifest daemonset \
@@ -42,28 +44,29 @@ kube-vip manifest daemonset \
     --controlplane \
     --leaderElection \
     --taint \
+    --services \
     --inCluster | tee /var/lib/rancher/k3s/server/manifests/kube-vip.yaml
-    
+
 # edit kube-vip.yaml
       tolerations:
       - effect: NoSchedule
         key: node-role.kubernetes.io/master
         operator: Exists
-        
-ping 10.68.0.240
 
-# edit config.demo.yaml and replace server with 10.68.0.240
+ping 10.68.0.80
+
+# edit config.demo.yaml and replace server with 10.68.0.80
 
 # add remaining server nodes
 
-k3sup join --host=demo-b --server-user=root --server-host=10.68.0.240 --user=root --k3s-version=v1.19.4+k3s1 --server --k3s-extra-args="--disable servicelb --node-taint node-role.kubernetes.io/master=true:NoSchedule"
+k3sup join --host=demo-b --server-user=root --server-host=10.68.0.80 --user=root --k3s-version=v1.19.4+k3s1 --server --k3s-extra-args="--disable servicelb --node-taint node-role.kubernetes.io/master=true:NoSchedule"
 
-k3sup join --host=demo-c --server-user=root --server-host=10.68.0.240 --user=root --k3s-version=v1.19.4+k3s1 --server --k3s-extra-args="--disable servicelb --node-taint node-role.kubernetes.io/master=true:NoSchedule"
+k3sup join --host=demo-c --server-user=root --server-host=10.68.0.80 --user=root --k3s-version=v1.19.4+k3s1 --server --k3s-extra-args="--disable servicelb --node-taint node-role.kubernetes.io/master=true:NoSchedule"
 
 k get po -n kube-system
 
 # add worker node
-k3sup join --host=demo-d --server-user=root --server-host=10.68.0.240 --user=root --k3s-version=v1.19.4+k3s1
+k3sup join --host=demo-d --server-user=root --server-host=10.68.0.80 --user=root --k3s-version=v1.19.4+k3s1
 
 k get po -n kube-system
 k get service -n kube-system
@@ -102,6 +105,4 @@ data:
 ns default
 k create deploy demo --image monachus/rancher-demo --port 8080 --replicas=3
 k expose deploy demo --type=LoadBalancer --port=80 --target-port=8080
-
 ```
-

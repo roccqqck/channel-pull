@@ -1,0 +1,8 @@
+tls-san:
+- demo-a
+- demo-a.home.monach.us
+- demo-cluster.home.monach.us
+- 10.68.0.81
+disable: rke2-ingress-nginx
+cni:
+- cilium

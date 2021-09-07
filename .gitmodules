@@ -1,5 +1,5 @@
 [submodule "resources/E22/kubeinvaders"]
-	path = resources/2020.02/kubeinvaders
+	path = resources/2020-01-28-kubeinvaders/kubeinvaders
 	url = https://github.com/oskapt/kubeinvaders
 [submodule "resources/common/rancher-demo"]
 	path = resources/common/rancher-demo
