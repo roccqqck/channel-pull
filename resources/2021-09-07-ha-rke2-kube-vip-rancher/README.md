@@ -1,4 +1,6 @@
-# RKE2 and Kube-VIP
+# HA Kubernetes with RKE2, kube-vip, and Rancher
+
+- [Video](https://youtu.be/QqSgiezqMAA)
 
 ## RKE2 Installation (Part One)
 
@@ -159,7 +161,7 @@ metadata:
   namespace: kube-system
 data:
   range-global: 10.68.1.120-10.68.1.130
-  
+
 cp configmap.yaml /var/lib/rancher/rke2/server/manifests
 
 # test
@@ -168,4 +170,3 @@ kubectl expose deploy nginx --port=80 --type=LoadBalancer
 
 kubectl get services
 ```
-
