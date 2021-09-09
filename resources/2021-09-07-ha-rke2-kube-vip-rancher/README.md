@@ -4,7 +4,7 @@
 
 ## RKE2 Installation (Part One)
 
-```
+```text
 ➤ cat config.a.yaml
 tls-san:
 - demo-a
@@ -44,7 +44,7 @@ kubectl get nodes
 
 ## Kube-VIP Installation
 
-```
+```bash
 
 # Pull kube-vip RBAC manifest
 curl -s https://kube-vip.io/manifests/rbac.yaml > /var/lib/rancher/rke2/server/manifests/kube-vip-rbac.yaml
@@ -147,7 +147,7 @@ kubectl get nodes -w
 
 ## Kube-VIP Cloud Provider Install
 
-```
+```bash
 # demo-a
 curl -sfL https://raw.githubusercontent.com/kube-vip/kube-vip-cloud-provider/main/manifest/kube-vip-cloud-controller.yaml > /var/lib/rancher/rke2/server/manifests/kube-vip-cloud-controller.yaml
 

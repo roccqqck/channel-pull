@@ -27,7 +27,7 @@ curl -s https://kube-vip.io/manifests/rbac.yaml > /var/lib/rancher/k3s/server/ma
     verbs: ["list", "get", "watch", "update", "create"]
 
 ifconfig ens18
-export VIP=10.68.0.240
+export VIP=10.68.0.80
 export INTERFACE=ens18
 
 # fetch container
