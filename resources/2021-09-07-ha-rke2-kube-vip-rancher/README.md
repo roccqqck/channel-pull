@@ -162,7 +162,7 @@ metadata:
 data:
   range-global: 10.68.1.120-10.68.1.130
 
-cp configmap.yaml /var/lib/rancher/rke2/server/manifests
+cp kube-vip-config.yaml /var/lib/rancher/rke2/server/manifests
 
 # test
 kubectl create deploy nginx --image=nginx:stable-alpine
