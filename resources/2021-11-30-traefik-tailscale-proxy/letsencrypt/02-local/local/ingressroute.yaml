@@ -1,0 +1,33 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: traefik-demo-http
+  namespace: traefik-demo
+spec:
+  entryPoints:
+  - web
+  routes:
+  - kind: Rule
+    match: Host(`traefik-demo.productionwebsite.com`)
+    services:
+    - name: traefik-demo
+      port: 80
+    middlewares:
+    - name: redirect-307
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: traefik-demo-https
+  namespace: traefik-demo
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`traefik-demo.productionwebsite.com`)
+    services:
+    - name: traefik-demo
+      port: 80
+  tls:
+    secretName: traefik-demo-productionwebsite-com-crt

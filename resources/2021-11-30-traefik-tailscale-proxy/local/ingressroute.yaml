@@ -1,0 +1,19 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: traefik-demo-external-http
+  namespace: traefik-demo
+spec:
+  entryPoints:
+  - web
+  routes:
+  - kind: Rule
+    match: Host(`traefik-demo.edge.138.197.212.50.sslip.io`)
+    services:
+    - name: traefik-demo
+      port: 80
+  - kind: Rule
+    match: Host(`traefik-demo.local.10.68.0.70.sslip.io`)
+    services:
+    - name: traefik-demo
+      port: 80

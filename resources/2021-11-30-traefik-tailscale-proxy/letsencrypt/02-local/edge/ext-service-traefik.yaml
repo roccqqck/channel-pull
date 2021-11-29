@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: local-traefik
+  namespace: traefik-system
+spec:
+  externalName: traefik.local.10.73.131.194.sslip.io
+  type: ExternalName
+  ports:
+  - port: 443
+    name: https
+  - port: 80
+    name: http

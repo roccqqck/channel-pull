@@ -1,0 +1,33 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: traefik-demo-http
+  namespace: traefik-system
+spec:
+  entryPoints:
+  - web
+  routes:
+  - kind: Rule
+    match: Host(`traefik-demo.edge.138.197.212.50.sslip.io`)
+    services:
+    - name: local-demo-http
+      port: 80
+    middlewares:
+    - name: redirect-307
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: traefik-demo-https
+  namespace: traefik-system
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`traefik-demo.edge.138.197.212.50.sslip.io`)
+    services:
+    - name: local-demo-http
+      port: 80
+  tls:
+    secretName: traefik-demo-edge-crt

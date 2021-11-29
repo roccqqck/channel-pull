@@ -1,0 +1,48 @@
+apiVersion: kyverno.io/v1
+kind: Policy
+metadata:
+  name: ts-sidecar
+  namespace: traefik-system
+  annotations:
+    policies.kyverno.io/title: Inject Tailscale Sidecar
+    policies.kyverno.io/subject: Pod
+    policies.kyverno.io/description: >-
+      This injects a Tailscale sidecar into the Traefik installation so that it can traverse
+      the Tailscale network.
+spec:
+  validationFailureAction: enforce
+  rules:
+  - name: inject-ts-sidecar
+    match:
+      resources:
+        kinds:
+        - Deployment
+        names:
+        - traefik
+    mutate:
+      overlay:
+        spec:
+          template:
+            spec:
+              containers:
+                - name: ts-sidecar
+                  imagePullPolicy: Always
+                  image: "monachus/tailscale:v1.16"
+                  env:
+                    # Store the state in a k8s secret
+                  - name: KUBE_SECRET
+                    value: "tailscale-auth"
+                  - name: EXTRA_ARGS
+                    value: "--accept-routes"
+                  - name: USERSPACE
+                    value: "false"
+                  - name: AUTH_KEY
+                    valueFrom:
+                      secretKeyRef:
+                        name: tailscale-auth
+                        key: AUTH_KEY
+                        optional: false
+                  securityContext:
+                    capabilities:
+                      add:
+                      - NET_ADMIN

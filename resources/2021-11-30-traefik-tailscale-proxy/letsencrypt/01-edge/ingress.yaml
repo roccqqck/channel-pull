@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: traefik-demo
+  namespace: traefik-system
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-staging
+    traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
+spec:
+  rules:
+  - host: traefik-demo.edge.138.197.212.50.sslip.io
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: local-demo-http
+            port:
+              number: 80
+  tls:
+  - hosts:
+    - traefik-demo.edge.138.197.212.50.sslip.io
+    secretName: traefik-demo-edge-crt

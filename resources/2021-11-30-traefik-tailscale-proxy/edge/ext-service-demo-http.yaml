@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: local-demo-http
+  namespace: traefik-system
+spec:
+  externalName: traefik-demo.local.10.73.131.216.sslip.io
+  type: ExternalName
+  ports:
+  - port: 80
+    name: http

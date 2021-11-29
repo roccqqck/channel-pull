@@ -1,0 +1,27 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRouteTCP
+metadata:
+  name: traefik-demo-http
+  namespace: traefik-system
+spec:
+  entryPoints:
+  - web
+  routes:
+  - match: HostSNI(`*`)
+    services:
+    - name: local-traefik
+      port: 80
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRouteTCP
+metadata:
+  name: traefik-demo-https
+  namespace: traefik-system
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - match: HostSNI(`*`)
+    services:
+    - name: local-traefik
+      port: 443
