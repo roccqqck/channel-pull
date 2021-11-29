@@ -9,3 +9,5 @@ This repository contains supporting resources for my [YouTube Channel](https://a
 - [HA K3s with etcd, kube-vip, MetalLB, and Rancher](resources/2021-03-09-ha-k3s-kube-vip-metallb)
 - [Getting Started with YOURLS: Your URL Shortener](resources/2021-06-28-getting-started-with-yourls)
 - [HA Kubernetes with RKE2, kube-vip, and Rancher](resources/2021-09-07-ha-rke2-kube-vip-rancher)
+- [Kubernetes Data Protection with Trilio](resources/2021-10-12-k8s-data-protection-with-trilio)
+- [Cut My Cloud Bill // Traefik | Tailscale](resources/2021-11-30-traefik-tailscale-proxy)
