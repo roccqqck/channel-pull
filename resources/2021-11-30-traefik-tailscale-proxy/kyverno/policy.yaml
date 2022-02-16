@@ -20,7 +20,7 @@ spec:
         names:
         - traefik
     mutate:
-      overlay:
+      patchStrategicMerge:
         spec:
           template:
             spec:
